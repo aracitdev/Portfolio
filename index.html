@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean Comeau - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+
+        /* Reset some default styles */
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #5BCEFA;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        /* Navigation menu styles */
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        /* Main content styles */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+
+            
+        .project {
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
+        }
+
+        .project-divider {
+            border-top: 1px solid #5BCEFA; /* Horizontal line with light blue color */
+            margin-top: 20px; /* Add some top margin for spacing */
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
+        }
+
+        /* Add your own styles for portfolio content here */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sean Comeau</h1>
+        <p>Programmer</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm Sean Comeau, a programmer skilled in C++, C, C#, HTML, CSS, and JavaScript. I'm passionate about coding and love solving complex problems.</p>
+        </section>
+        
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            
+            <div class="project">
+                <img src="Fractal.png" class="center-fit" alt="Julia Fractal Generator">
+                <h3>Julia Fractal Generator</h3>
+                <p>This project is a Julia Fractal Generator built in c++.</p>
+                <a href="#">View Project</a>
+            </div>
+            
+            <hr class="project-divider"> <!-- Horizontal line -->
+            
+            <div class="project">
+                <img src="Raytracer.png" class="center-fit" alt="CPU Raytracer">
+                <h3>CPU Raytracer</h3>
+                <p>A CPU-based raytracer implemented in C++ for rendering realistic 3D scenes.</p>
+                <a href="#">View Project</a>
+            </div>
+            
+            <hr class="project-divider"> <!-- Horizontal line -->
+            
+            <div class="project">
+                <img src="CelesteEditor.png" class="center-fit" alt="Editor for the game Celeste">
+                <h3>Celeste Game Editor</h3>
+                <p>An editor created for custom levels in the popular game Celeste using C++.</p>
+                <a href="https://github.com/aracitdev/Cherry">View Project</a>
+            </div>
+
+            <hr class="project-divider"> <!-- Horizontal line -->
+            <div class="project">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/FSHBia7rW8k?si=9ZpHoRFoG4cT5Gk-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                <h3>Gameboy Emulator</h3>
+                <p>A gameboy emulator created in C++.</p>
+                <a href="https://github.com/aracitdev/GameBoyEmu">View Project</a>
+            </div>
+
+            
+            <hr class="project-divider"> <!-- Horizontal line -->
+
+            <hr class="project-divider"> <!-- Horizontal line -->
+            <div class="project">
+                <img src="calculator.png" class="center-fit" alt="calculator">
+                <h3>Calculator</h3>
+                <p>A calculator app written in dart.</p>
+            </div>
+        </section>
+        
+        
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>You can reach me at sean@comeauband.com</p>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2023 Sean Comeau
+    </footer>
+</body>
+</html>
