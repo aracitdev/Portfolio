@@ -9,7 +9,7 @@ var chip8 = function() {
     this.screenContext.fillStyle = "#000000";
     this.screenElement.width = this.screenWidth * this.pixelScale;
     this.screenElement.height = this.screenHeight * this.pixelScale;
-
+    this.isRunning = false; // so we don't run the cycle twice
     this.screenContext.fillRect(0, 0, this.screenWidth * this.pixelScale, this.screenHeight * this.pixelScale);
 
     this.reset();
@@ -255,7 +255,10 @@ chip8.prototype.loadProgram = function(program) {
     this.reset();
     for(var i = 0; i < program.length; i++)
         this.memory[i + 0x200] = program[i];
+
+    if(this.isRunning) return;
     this.runCycle();
+    this.isRunning = true;
 }
 
 chip8.prototype.updateTimers = function() {
@@ -276,7 +279,12 @@ chip8.prototype.executeOpcode = function() {
     this.opcodeTable[(this.opcode & 0xF000) >> 12](this, x, y);
 }
 
+chip8.prototype.stop = function() {
+    this.isRunning = false;
+}
+
 chip8.prototype.runCycle = function() {
+    if(!this.isRunning) return; // if we're not running, don't run the cycle
     this.executeOpcode();
     this.updateTimers();
     this.step++; // increment step
