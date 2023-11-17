@@ -2,6 +2,11 @@ var chip8 = function() {
     this.screenElement = document.getElementById("chip8-screen");
     this.screenContext = this.screenElement.getContext("2d");
 
+    this.registerDisplay = document.getElementById("chip8-register-display");
+    this.lastOpcodeDisplay = document.getElementById("chip8-last-instruction");
+    this.debugMode = false;
+
+
     this.screenWidth = 64;
     this.screenHeight = 32;
 
@@ -13,6 +18,32 @@ var chip8 = function() {
     this.screenContext.fillRect(0, 0, this.screenWidth * this.pixelScale, this.screenHeight * this.pixelScale);
 
     this.reset();
+}
+
+chip8.prototype.updateDebugDisplay = function() {
+    if(!this.debugMode) return;
+
+    var debugString = "";
+    for(var i = 0; i < this.V.length; i++)
+        debugString += "V" + i.toString(16) + ": " + this.V[i].toString(16) + " ";
+    debugString += "I: " + this.I.toString(16) + " ";
+    debugString += "DT: " + this.DT.toString(16) + " ";
+    debugString += "ST: " + this.ST.toString(16) + " ";
+    debugString += "PC: " + this.PC.toString(16) + " ";
+    debugString += "SP: " + this.SP.toString(16) + " ";
+
+    this.registerDisplay.innerText = debugString;
+
+    this.lastOpcodeDisplay.innerText = "Last Opcode: " + this.opcode.toString(16);
+}
+
+chip8.prototype.toggleDebugMode = function() {
+    this.debugMode = !this.debugMode;
+    if(!this.debugMode)
+    {
+        this.registerDisplay.innerText = "";
+        this.lastOpcodeDisplay.innerText = "";
+    }
 }
 
 chip8.prototype.reset = function() {
@@ -257,8 +288,8 @@ chip8.prototype.loadProgram = function(program) {
         this.memory[i + 0x200] = program[i];
 
     if(this.isRunning) return;
-    this.runCycle();
     this.isRunning = true;
+    this.runCycle();
 }
 
 chip8.prototype.updateTimers = function() {
@@ -284,7 +315,8 @@ chip8.prototype.stop = function() {
 }
 
 chip8.prototype.runCycle = function() {
-    if(!this.isRunning) return; // if we're not running, don't run the cycle
+    if(!(this.isRunning)) return;
+
     this.executeOpcode();
     this.updateTimers();
     this.step++; // increment step
@@ -302,6 +334,6 @@ chip8.prototype.runCycle = function() {
         this.updateDisplay = false;
     }
 
-    // 
+    this.updateDebugDisplay();
 	setTimeout(this.runCycle.bind(this), 10); // run the cycle again
 }

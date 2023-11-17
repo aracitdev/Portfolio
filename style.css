@@ -94,10 +94,15 @@ footer {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-
     
     border:2px solid #ccc;
     -webkit-border-radius: 5px;
     border-radius: 3px;
+    border-color:#333;
+}
+
+.button-tabs:hover {
+    background-color: #F5A9B8;
+    color: white;
     border-color:#333;
 }

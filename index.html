@@ -33,12 +33,17 @@
             <h2>About Me</h2>
             <p>Hi, I'm Sean Comeau, a programmer skilled in C++, C, C#, HTML, CSS, and JavaScript. I'm passionate about coding and love solving complex problems.</p>
         </section>
-
+        <!-- break -->
+        <hr class="project-divider"> <!-- Horizontal line -->
+        <!-- Chip8 Emulator -->
+        <h1 style="text-align: center;">Chip8 Emulator</h1>
 		<div id="main">
 			<canvas id="chip8-screen" style="border:1px solid #000"></canvas>
 		</div>
 
-        <!-- List of buttons to load various roms -->
+        <!-- Register display -->
+        <p id="chip8-register-display"></p>
+        <p id="chip8-last-instruction"></p>
 
 		<script src="chip8.js"></script>
 		<script>
@@ -74,6 +79,10 @@
 			loadRom('IBM Logo.ch8');
 		</script>
 
+        <!-- debug mode toggle by calling chip.toggleDebugMode();-->
+        <button onclick="chip.toggleDebugMode();">Toggle Debug Mode</button>
+
+
         <!-- Buttons to load common roms -->
         <div>
             <button onclick="loadRom('IBM Logo.ch8')">IBM Logo</button>
@@ -84,11 +93,13 @@
             <button onClick="loadRom('Particle Demo [zeroZshadow, 2008].ch8')">Particle Demo</button>
         </div>
 
+        <hr class="project-divider"> <!-- Horizontal line -->
         <section id="portfolio">
             <h2>Portfolio</h2>
             <!-- different buttons to swap between projects-->
             <div class="project-buttons">
-                <button onclick="setTab('julia')" class="button-tabs">Julia Fractal Generator</button>
+                <!-- on hover we change the color -->
+                <button onclick="setTab('julia')" class="button-tabs" >Julia Fractal Generator</button>
                 <button onclick="setTab('raytracer')" class="button-tabs">CPU Raytracer</button>
                 <button onclick="setTab('celeste')" class="button-tabs">Celeste Game Editor</button>
                 <button onclick="setTab('emulator')" class="button-tabs">Gameboy Emulator</button>
